@@ -17,7 +17,7 @@ class ProductController extends Controller
     }
     public function index()
     {
-        $products = Product::select('id', 'name', 'price', 'image')->get();
+        $products = Product::select('id', 'name', 'price', 'image','purchase_price')->get();
         return response()->json($products);
     }
     public function store(Request $request)
@@ -75,7 +75,7 @@ class ProductController extends Controller
 
         return response()->json([
             'message' => 'Product updated successfully',
-            'product' => $product->fresh(), // Return updated data
+            'product' => $product->fresh(),
         ], 200);
     }
 
@@ -97,7 +97,7 @@ class ProductController extends Controller
         // dd($request->all());
         return $request->validate([
             'name'        => 'required|string|max:255',
-            'category_id' => 'required|integer',
+            'purchase_price' => 'required',
             'price'       => 'required|numeric|min:0',
             'description' => 'nullable|string',
             // 'image' => 'nullable|mimes:jpeg,png,jpg,gif|max:2048|string',

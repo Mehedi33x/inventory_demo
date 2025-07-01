@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'price', 'category_id', 'description', 'image'];
+    protected $fillable = ['name', 'price', 'purchase_price', 'description', 'image'];
     protected $appends=['image_url'];
     public function getImageUrlAttribute()
     {

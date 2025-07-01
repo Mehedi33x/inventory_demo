@@ -1,12 +1,13 @@
 <?php
 
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\ReportController;
-use App\Http\Controllers\SaleController;
-use App\Http\Controllers\StockController;
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\SaleController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\StockController;
+use App\Http\Controllers\ReportController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,8 @@ use Illuminate\Support\Facades\Route;
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
+Route::get('/', [DashboardController::class, 'index']);
+Route::get('/dashboard-stats', [DashboardController::class, 'dashboard']);
 Route::get('/product', [ProductController::class, 'index']);
 Route::post('product/store', [ProductController::class, 'store'])->name('product.store');
 Route::get('/product/show/{id}', [ProductController::class, 'show']);
@@ -51,3 +54,4 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::get('get-products', [ProductController::class, 'getProducts'])->name('get.products');
 
 Route::get('report', [ReportController::class, 'index'])->name('reports.index');
+Route::get('/journals', [SaleController::class, 'getJournalEntries']);

@@ -85,6 +85,11 @@ const routes = [
         name: 'report.index',
         component: () => import('../pages/report/report.vue'),
     },
+    {
+        path: '/journals',
+        name: 'journals.index',
+        component: () => import('../pages/journals/accounting_journal.vue'),
+    },
 ];
 
 const router = createRouter({

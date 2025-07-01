@@ -17,11 +17,9 @@ class StockController extends Controller
     public function index(Request $request)
     {
         $perPage = $request->get('perPage', 10);
-
         $stocks = Stock::with('product')
             ->select('id', 'product_id', 'quantity')
             ->paginate($perPage);
-
         return response()->json([
             'data'        => $stocks->items(),
             'currentPage' => $stocks->currentPage(),
@@ -53,39 +51,29 @@ class StockController extends Controller
     public function show($id)
     {
         $stock = Stock::find($id);
-
         if ($stock) {
             return response()->json($stock);
         }
-
         return response()->json(['error' => 'Stock not found'], 404);
     }
-
     public function edit($id)
     {
         $stock = Stock::find($id);
-
         if ($stock) {
             return response()->json($stock);
         }
-
         return response()->json(['error' => 'Stock not found'], 404);
     }
 
     public function update(Request $request, $id)
     {
         $this->doValidation($request);
-
         $stock = Stock::find($id);
-
         if (! $stock) {
             return response()->json(['error' => 'Stock not found'], 404);
         }
-
         $data = $request->all();
-
         $this->dataHandleService->update($stock, $data);
-
         return response()->json([
             'message' => 'Stock updated successfully',
             'stock'   => $stock->fresh(),
@@ -95,13 +83,10 @@ class StockController extends Controller
     public function destroy($id)
     {
         $stock = Stock::find($id);
-
         if (! $stock) {
             return response()->json(['error' => 'Stock not found'], 404);
         }
-
         $stock->delete();
-
         return response()->json(['message' => 'Stock deleted successfully'], 200);
     }
 

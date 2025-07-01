@@ -11,23 +11,16 @@
                             placeholder="Enter Product Name">
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Price</label>
+                        <label class="form-label">Selling Price</label>
                         <input v-model="form.price" v-numbers-only type="text" name="price" class="form-control"
                             placeholder="Enter Product Price">
                     </div>
-
                 </div>
                 <div class="col-md-6">
-                    <div class="input-group mb-3">
-                        <label for="inputGroupSelect04" class="input-group mb-2">Choose Option</label>
-                        <select v-model="form.category_id" class="form-select" id="inputGroupSelect04"
-                            aria-label="Example select with button addon">
-                            <option selected>Choose...</option>
-                            <option v-for="category in categories" :key="category.id" :value="category.id">{{
-                                category.name
-                            }}</option>
-                        </select>
-                        <button class="btn btn-outline-secondary" type="button">Button</button>
+                    <div class="mb-3">
+                        <label class="form-label">Purchase Price</label>
+                        <input v-model="form.purchase_price" v-numbers-only type="text" name="purchase_price" class="form-control"
+                            placeholder="Enter Product Purchase Price">
                     </div>
                     <div class="input-group mb-3">
                         <label for="inputGroupSelect04" class="input-group mb-2">Images</label>
@@ -36,7 +29,6 @@
                         <button class="btn btn-outline-secondary" type="button"
                             id="inputGroupFileAddon04">Button</button>
                     </div>
-
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlTextarea1" class="form-label">Description</label>
@@ -45,11 +37,9 @@
                 </div>
             </div>
             <button @click="saveData" type="button" class="btn btn-success">Success</button>
-
         </div>
     </div>
 </template>
-
 
 <script>
 import axios from 'axios';
@@ -58,14 +48,10 @@ import Swal from 'sweetalert2';
 export default {
     data() {
         return {
-            categories: [
-                { id: 1, name: 'Meat' },
-                { id: 2, name: 'Fish' },
-                { id: 3, name: 'Vegetables' }
-            ],
             form: {
                 name: '',
                 price: '',
+                purchase_price:'',
                 category_id: '',
                 description: '',
                 image: '',
@@ -86,7 +72,7 @@ export default {
                 const formData = new FormData();
                 formData.append('name', this.form.name);
                 formData.append('price', this.form.price);
-                formData.append('category_id', this.form.category_id);
+                formData.append('purchase_price', this.form.purchase_price);
                 formData.append('description', this.form.description);
                 formData.append('image', this.form.image);
                 
@@ -121,7 +107,6 @@ export default {
                         });
                     }
                 }
-
             } catch (error) {
                 console.error(error.response?.data || error.message);
                 Swal.fire({

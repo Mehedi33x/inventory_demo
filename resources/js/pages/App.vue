@@ -1,7 +1,7 @@
 <template>
     <HeaderSection />
     <router-view />
-    <FooterSection v-if="showFooter"/>
+    <!-- <FooterSection v-if="showFooter"/> -->
 </template>
 
 <script setup>

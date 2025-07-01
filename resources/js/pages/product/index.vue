@@ -9,7 +9,8 @@
                         <th scope="col">#</th>
                         <th scope="col">Image</th>
                         <th scope="col">Prouct Name</th>
-                        <th scope="col">Pirce</th>
+                        <th scope="col">Purchase Price</th>
+                        <th scope="col">Selling Price</th>
                         <th scope="col">Actions</th>
                     </tr>
                 </thead>
@@ -19,6 +20,7 @@
                         <td><img v-if="item.image_url" :src="item.image_url" alt="Product Image"
                                 style="height: 40px;width: 40px;" /></td>
                         <td>{{ item.name }}</td>
+                        <td>{{ item.purchase_price }}</td>
                         <td>{{ item.price }}</td>
                         <td>
                             <button @click="showProduct(item.id)" class="btn btn-success btn-sm">View</button>
@@ -34,9 +36,7 @@
                     </tr>
                 </tbody>
             </table>
-            
         </div>
-
 
         <!-- Bootstrap Modal -->
         <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
@@ -51,7 +51,8 @@
                              <img v-if="selectedProduct.image_url" :src="selectedProduct.image_url" alt="Product Image"
                                 class="img-fluid" style="height: 180px;width: 300px;"/>
                             <p><strong>Name:</strong> {{ selectedProduct.name }}</p>
-                            <p><strong>Price:</strong> {{ selectedProduct.price }}</p>
+                            <p><strong>Purchase Price:</strong> {{ selectedProduct.purchase_price }}</p>
+                            <p><strong>Selling Price:</strong> {{ selectedProduct.price }}</p>
                             <p><strong>Description:</strong> {{ selectedProduct.description }}</p>
                            
                         </div>

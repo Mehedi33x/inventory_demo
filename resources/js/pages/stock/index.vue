@@ -2,7 +2,6 @@
     <div class="container">
         <h3 class="text-center mt-4">Stock List</h3>
         <button @click="createStock" class="btn btn-success text-end">Create</button>
-
         <div class="container mt-5">
             <table class="table">
                 <thead>
@@ -99,7 +98,6 @@ export default {
                 });
             }
         }
-
     },
     created() {
         this.fetchStocks();
