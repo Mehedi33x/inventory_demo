@@ -17,6 +17,7 @@
       <router-link class="py-2 d-none d-md-inline-block" :to="{ name: 'stock.index' }">Stock</router-link>
       <router-link class="py-2 d-none d-md-inline-block" :to="{ name: 'sale.index' }">Sale</router-link>
       <router-link class="py-2 d-none d-md-inline-block" :to="{ name: 'report.index' }">Report</router-link>
+      <router-link class="py-2 d-none d-md-inline-block" :to="{ name: 'journals.index' }">Journals</router-link>
       <router-link class="py-2 d-none d-md-inline-block" :to="{ name: 'user.index' }">User</router-link>
       <router-link class="py-2 d-none d-md-inline-block" :to="{ name: 'auth.login' }">Login</router-link>
     </div>

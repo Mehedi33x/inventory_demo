@@ -1,6 +1,6 @@
 <template>
-    <div class="container mt-4">
-        <h4 class="mb-3">Accounting Journal Entries</h4>
+    <div class="container my-4">
+        <h3 class="text-center">{{ page_title }}</h3>
         <table class="table table-bordered">
             <thead>
                 <tr>
@@ -24,6 +24,11 @@
                     <td>{{ new Date(entry.created_at).toLocaleString() }}</td>
                 </tr>
             </tbody>
+            <tfoot v-if="journals.length === 0">
+                <tr>
+                    <td colspan="5" class="text-center text-muted">No data found</td>
+                </tr>
+            </tfoot>
         </table>
     </div>
 </template>
@@ -32,6 +37,7 @@
 export default {
     data() {
         return {
+            page_title: "Accounting Journals",
             journals: [],
         };
     },
@@ -53,7 +59,6 @@ export default {
 <style scoped>
 .table th,
 .table td {
-  vertical-align: middle;
+    vertical-align: middle;
 }
 </style>
-
