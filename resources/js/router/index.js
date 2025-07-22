@@ -34,18 +34,18 @@ const routes = [
         component: () => import('../pages/user/create.vue'),
     },
     // auth
-    {
-        path: '/login',
-        name: 'auth.login',
-        component: () => import('../pages/auth/login.vue'),
+    // {
+    //     path: '/login',
+    //     name: 'auth.login',
+    //     component: () => import('../pages/auth/login.vue'),
 
-    },
-    {
-        path: '/register',
-        name: 'auth.register',
-        component: () => import('../pages/auth/register.vue'),
+    // },
+    // {
+    //     path: '/register',
+    //     name: 'auth.register',
+    //     component: () => import('../pages/auth/register.vue'),
 
-    },
+    // },
     // stock
     {
         path: '/stock',

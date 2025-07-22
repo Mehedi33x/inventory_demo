@@ -54,13 +54,13 @@ class SaleController extends Controller
                 $available_stock->quantity -= $data['quantity'];
                 $available_stock->save();
             }
+            $this->createJournalEntries($sale, $data);
             \DB::commit();
 
             return response()->json([
                 'message' => 'Sale recorded successfully',
                 'sale'    => $sale,
             ], 201);
-            $this->createJournalEntries($sale, $data);
         } catch (\Exception $e) {
             \DB::rollBack();
             return response()->json([
@@ -197,6 +197,7 @@ class SaleController extends Controller
         $journals = AccountJournal::with('sale.product')
             ->latest()
             ->get();
+
         return response()->json($journals);
     }
 

@@ -12,16 +12,16 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="entry in journals" :key="entry.id">
-                    <td>{{ entry.sale_id }}</td>
-                    <td>{{ entry.account }}</td>
+                <tr v-for="item in journals" :key="item.id">
+                    <td>{{ item?.sale?.invoice_number }}</td>
+                    <td>{{ item.account }}</td>
                     <td>
-                        <span :class="entry.type === 'debit' ? 'text-success' : 'text-danger'">
-                            {{ entry.type }}
+                        <span :class="item.type === 'debit' ? 'text-success' : 'text-danger'">
+                            {{ item.type }}
                         </span>
                     </td>
-                    <td>{{ parseFloat(entry.amount).toFixed(2) }}</td>
-                    <td>{{ new Date(entry.created_at).toLocaleString() }}</td>
+                    <td>{{ parseFloat(item.amount).toFixed(2) }}</td>
+                    <td>{{ new Date(item.created_at).toLocaleString() }}</td>
                 </tr>
             </tbody>
             <tfoot v-if="journals.length === 0">
